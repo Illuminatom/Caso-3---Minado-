@@ -15,6 +15,7 @@
                     algoritmo = "SHA-512";
                 }
                 MessageDigest md = MessageDigest.getInstance(algoritmo);
+                MessageDigest md2 = MessageDigest.getInstance(algoritmo);
                 
                 System.out.print("Ingrese el texto de entre 16 y 20 caracteres al cual aplicar el algoritmo: ");
                 String mensajePlano = scanner.next();
@@ -47,7 +48,14 @@
       
                     monoThread.start();
                 } else {
-                    System.out.println("Aun no esta listo :P");
+                    Monitor monitor = new Monitor();
+                    T1 t1 = new T1(cantidadCeros, mensajePlano, md, repBinaria, monitor);
+                    T2 t2 = new T2(cantidadCeros, mensajePlano, md2, repBinaria, monitor);
+
+                    System.out.println("\n");
+                    t1.start();
+                    t2.start();
+
                 }
             }
 
