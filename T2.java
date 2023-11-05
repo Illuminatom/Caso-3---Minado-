@@ -7,7 +7,6 @@ public class T2 extends Thread{
     private String mensajePlano;
     private MessageDigest algoritmo;
     private String cadenaCeros;
-    private String repBinaria;
     private String mensajeEncontrado;
     private String hashEncontrado;
 
@@ -16,17 +15,12 @@ public class T2 extends Thread{
         mensajePlano = mensajePlanoP;
         algoritmo = algoritmoP;
         cadenaCeros = "0".repeat(cantidadCeros);
-        repBinaria = repBinariaP;
         monitor = monitorP;
     }
 
     @Override
     public void run() {
         System.out.println("Ejecutando T2");
-        System.out.println("Cantidad de 0's al inicio: " + cantidadCeros);
-        System.out.println("Mensaje plano: " + mensajePlano);
-        System.out.println("Representación binaria del hash: " + repBinaria);
-        System.out.println("Algoritmo de Hash: " + algoritmo.getAlgorithm());
 
         boolean encontrado = false;
         String abecedario = "abcdefghijklmnopqrstuvwxyz";
@@ -61,7 +55,7 @@ public class T2 extends Thread{
             if (monitor.getEncontrado()) {
                 return true;
             }
-            
+
             if (hash.startsWith(cadenaCeros)) {
                 mensajeEncontrado = mensajeConcatenado;
                 hashEncontrado = hash;
